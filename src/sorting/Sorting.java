@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Sorting {
 
-    public static void burbleSortComplexity(int numberElements) {
+    public static void arraySortComplexity(int numberElements) {
         int[] worstArray = generateWorstArray(numberElements);
         int[] randomArray = generateRandomArray(numberElements);
 
@@ -14,6 +14,9 @@ public class Sorting {
 
         burbleSort2(worstArray.clone());
         burbleSort2(randomArray.clone());
+
+        selectionSort(worstArray.clone());
+        selectionSort(randomArray.clone());
     }
 
     // burble sort 1
@@ -58,6 +61,33 @@ public class Sorting {
                     swaps++;
                 }
             }
+        }
+
+        print(arr);
+        printComplexity(iterations, swaps);
+    }
+
+    // selection sort
+    // O((n^2)/2)
+    public static void selectionSort(int[] arr) {
+        print(arr);
+
+        long iterations = 0;
+        long swaps = 0;
+
+        int last = arr.length - 1;
+        for (int i = 0; i <= last - 1; i++) {
+            int minElement = i;
+            for (int j = i + 1; j <= last; j++) {
+                iterations++;
+                if (arr[j] <= arr[minElement]) {
+                    minElement = j;
+                }
+            }
+            int minValue = arr[minElement];
+            arr[minElement] = arr[i];
+            arr[i] = minValue;
+            swaps++;
         }
 
         print(arr);
