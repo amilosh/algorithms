@@ -17,6 +17,9 @@ public class Sorting {
 
         selectionSort(worstArray.clone());
         selectionSort(randomArray.clone());
+
+        insertionSort(worstArray.clone());
+        insertionSort(randomArray.clone());
     }
 
     // burble sort 1
@@ -88,6 +91,28 @@ public class Sorting {
             arr[minElement] = arr[i];
             arr[i] = minValue;
             swaps++;
+        }
+
+        print(arr);
+        printComplexity(iterations, swaps);
+    }
+
+    // insertion sort
+    public static void insertionSort(int[] arr) {
+        print(arr);
+
+        long iterations = 0;
+        long swaps = 0;
+
+        var size = arr.length - 1;
+        for (int i = 1; i <= size; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
         }
 
         print(arr);
